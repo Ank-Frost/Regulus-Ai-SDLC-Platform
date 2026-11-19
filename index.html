@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regulus AI — Financial Requirements Intelligence &amp; SDLC Selection Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="src/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <!-- Sidebar Navigation -->
+      <aside class="sidebar">
+        <a class="brand" href="#">
+          <span class="brand-mark">R</span>
+          <span>regulus<span style="color:var(--lime)">.ai</span></span>
+          <span class="brand-sub">Enterprise</span>
+        </a>
+
+        <!-- Case Study Selector -->
+        <div class="case-selector">
+          <label for="caseSelect">Financial Case Study</label>
+          <select id="caseSelect">
+            <option value="onboarding">Atlas Onboarding (KYC)</option>
+            <option value="payments">AuraPay (Settlement Switch)</option>
+            <option value="fraud">SentriFraud (AML &amp; AI)</option>
+            <option value="reporting">RegLedger (BCBS 239)</option>
+          </select>
+        </div>
+
+        <nav>
+          <button class="nav-item active" data-view="overview"><span>◈</span> <span>Overview</span></button>
+          <button class="nav-item" data-view="intake"><span>◎</span> <span>Intake &amp; Analysis</span> <i id="intakeBadge">Ready</i></button>
+          <button class="nav-item" data-view="requirements"><span>☷</span> <span>Requirements</span> <i id="navReqCount">8</i></button>
+          <button class="nav-item" data-view="traceability"><span>⌘</span> <span>Traceability</span></button>
+          <button class="nav-item" data-view="sdlc"><span>◇</span> <span>SDLC Strategy</span> <i id="sdlcModelBadge" style="background:#fff;color:var(--forest-dark);font-size:9px">Hybrid</i></button>
+          <button class="nav-item" data-view="governance"><span>◌</span> <span>Governance &amp; Audit</span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span>Local Engine Active</span>
+          </div>
+          <button id="resetDemoBtn" class="reset-btn" title="Reset Demo Data">↻ Reset</button>
+        </div>
+      </aside>
+
+      <!-- Main App View Container -->
+      <main>
+        <header>
+          <div>
+            <p class="eyebrow" id="pageEyebrow">FINANCIAL REQUIREMENTS INTELLIGENCE</p>
+            <h1 id="pageTitle">Project Overview &amp; Strategy</h1>
+          </div>
+          <div class="header-actions">
+            <div class="badge-case" id="currentCaseBadge">
+              <span id="caseAvatar">AO</span>
+              <span id="caseTitleText">Atlas Onboarding</span>
+            </div>
+            <button class="secondary small-btn" id="exportSRSHeaderBtn">Export SRS (.md) ↓</button>
+          </div>
+        </header>
+
+        <!-- ================= VIEW 1: OVERVIEW ================= -->
+        <section id="overview" class="view active">
+          <div class="hero">
+            <div class="hero-content">
+              <p class="eyebrow accent" id="heroEyebrow">FINANCIAL REQUIREMENTS &amp; SDLC</p>
+              <h2 id="heroTitle">Digital Customer Onboarding<br /><em>with accountable compliance.</em></h2>
+              <p class="hero-copy" id="heroSummary">An Agentic AI platform transforming unstructured stakeholder conversations into verifiable, regulatory-grounded requirements with mathematically justified SDLC model selection.</p>
+              <div class="hero-tags">
+                <span class="hero-tag">RBI-KYC 2016 Compliant</span>
+                <span class="hero-tag">GDPR Art. 9 &amp; 25</span>
+                <span class="hero-tag">PCI-DSS Ready</span>
+                <span class="hero-tag">SDLC Selection Engine</span>
+              </div>
+            </div>
+            <div>
+              <button class="primary" data-go="intake">Launch Agent Pipeline <span>→</span></button>
+            </div>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="metrics">
+            <article class="metric-card">
+              <p>EXTRACTED REQUIREMENTS</p>
+              <strong id="metricReqCount">08</strong>
+              <small id="metricReqSub">100% mapped to standards</small>
+            </article>
+            <article class="metric-card">
+              <p>REGULATORY COVERAGE</p>
+              <strong id="metricCoverage">94<span>%</span></strong>
+              <small>Grounded in 5 financial frameworks</small>
+            </article>
+            <article class="metric-card highlight">
+              <p>RECOMMENDED SDLC</p>
+              <strong id="metricSDLCWinner">Agile–DevSecOps Hybrid</strong>
+              <small id="metricSDLCScore">Compatibility Score: 94%</small>
+            </article>
+            <article class="metric-card">
+              <p>OPEN HUMAN DECISIONS</p>
+              <strong id="metricOpenDecisions">02</strong>
+              <small>Awaiting 4-eyes compliance sign-off</small>
+            </article>
+          </div>
+
+          <!-- Two Column Activity & Risk Posture -->
+          <div class="two-col">
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">AGENT EXECUTION TELEMETRY</p>
+                  <h3>Multi-Agent Pipeline Stream</h3>
+                </div>
+                <button class="text-btn" data-go="intake">Inspect Intake →</button>
+              </div>
+              <div class="activity-feed" id="activityFeed"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">COMPLIANCE &amp; THREAT PROFILE</p>
+                  <h3>Control Posture</h3>
+                </div>
+                <span class="status-badge pending" id="overallRiskBadge">Calibrated Moderate</span>
+              </div>
+              <div class="risk-gauge-container">
+                <div class="gauge-visual">
+                  <div class="gauge-score">
+                    <strong id="gaugeValue">74</strong>
+                    <span>/ 100</span>
+                  </div>
+                </div>
+                <small style="color:var(--muted)">Composite Risk Mitigation Score</small>
+              </div>
+              <div class="risk-breakdown">
+                <div class="risk-row">
+                  <span><i class="dot red"></i> Security &amp; PII Safeguards</span>
+                  <b id="riskSecScore">98% Satisfied</b>
+                </div>
+                <div class="risk-row">
+                  <span><i class="dot amber"></i> Regulatory Conformance (RBI/GDPR)</span>
+                  <b id="riskRegScore">94% Grounded</b>
+                </div>
+                <div class="risk-row">
+                  <span><i class="dot green"></i> SDLC Model Alignment</span>
+                  <b id="riskSDLCScore">89% Match</b>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <!-- ================= VIEW 2: INTAKE & ANALYSIS ================= -->
+        <section id="intake" class="view">
+          <div class="split-intake">
+            <div class="intake-main">
+              <p class="eyebrow">STAKEHOLDER ELICITATION</p>
+              <h2>Unstructured Input to Verifiable Engineering</h2>
+              <p class="section-copy" style="margin-bottom:16px">Enter interview transcripts, business emails, or policy documents. The 13 specialized agents will mask sensitive PII, extract structured functional/non-functional items, run quality checks, and evaluate SDLC decision criteria.</p>
+
+              <label for="intakeText" style="font-weight:700;font-size:12px;display:block;margin-bottom:6px">Stakeholder Statement / Interview Transcript</label>
+              <textarea id="intakeText" placeholder="Enter stakeholder statement or notes..."></textarea>
+
+              <div class="intake-actions">
+                <div class="intake-toggles">
+                  <label class="switch-label">
+                    <input type="checkbox" id="maskingToggle" checked />
+                    <span>Auto-Mask PII / Sensitive Data</span>
+                  </label>
+                  <label class="switch-label">
+                    <input type="checkbox" id="groundingToggle" checked />
+                    <span>Enforce Regulatory Grounding</span>
+                  </label>
+                </div>
+                <button class="primary" id="runPipelineBtn">Execute 13-Agent Analysis <span>→</span></button>
+              </div>
+
+              <!-- Pipeline Execution Box -->
+              <div class="agent-pipeline-box" id="pipelineBox">
+                <p class="eyebrow">EXECUTION STATUS</p>
+                <div id="pipelineSteps">
+                  <div class="pipeline-step"><b>Ready</b> · Awaiting execution trigger</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Clarification Questions Card -->
+            <aside class="question-card" id="clarificationCard">
+              <span class="question-badge">CLARIFICATION AGENT · NEXT QUESTION</span>
+              <h3 id="currentQuestionTitle">What is the maximum acceptable turnaround time for identity verification?</h3>
+              <p id="currentQuestionContext">Performance and customer abandonment targets must be explicitly specified before this requirement can be baselined under IEEE 830.</p>
+              <div class="question-actions">
+                <button class="secondary small-btn" id="skipQuestionBtn">Skip</button>
+                <button class="primary small-btn" id="answerQuestionBtn">Inject Suggested Clarification</button>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <!-- ================= VIEW 3: REQUIREMENTS BASELINE ================= -->
+        <section id="requirements" class="view">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">IEEE 830 / ISO 29148 SPECIFICATION</p>
+              <h2>Requirements Baseline with Attached Reasoning</h2>
+            </div>
+            <button class="primary" id="openAddReqModalBtn">+ Add Requirement</button>
+          </div>
+
+          <!-- Quality Alerts Container -->
+          <div id="qualityAlertsContainer" style="margin-bottom:16px"></div>
+
+          <!-- Filter Row -->
+          <div class="filter-row">
+            <button class="filter-btn active" data-filter="all">All <span id="countAll">8</span></button>
+            <button class="filter-btn" data-filter="Functional">Functional <span id="countFunc">3</span></button>
+            <button class="filter-btn" data-filter="Security">Security <span id="countSec">2</span></button>
+            <button class="filter-btn" data-filter="Compliance">Compliance <span id="countComp">2</span></button>
+            <button class="filter-btn" data-filter="Availability">Availability <span id="countAvail">1</span></button>
+            <button class="filter-btn" data-filter="Integration">Integration <span id="countInt">1</span></button>
+          </div>
+
+          <!-- Requirements Table -->
+          <div class="req-table" id="reqTableBody"></div>
+        </section>
+
+        <!-- ================= VIEW 4: TRACEABILITY MATRIX ================= -->
+        <section id="traceability" class="view">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">BIDIRECTIONAL VERIFICATION GRAPH</p>
+              <h2>End-to-End Requirements Traceability Matrix (RTM)</h2>
+              <p style="font-size:12px;color:var(--muted);margin-top:4px">Verify every requirement backward to original stakeholder dialogue and forward to statutory regulations, acceptance criteria, and SDLC gates.</p>
+            </div>
+            <button class="secondary" id="exportRTMBtn">Export RTM (CSV) ↓</button>
+          </div>
+
+          <div class="trace-container">
+            <div class="trace-flowchart">
+              <div class="trace-box">
+                <span>01 · STAKEHOLDER QUOTE</span>
+                <b id="traceSourceTitle">Interview Note</b>
+                <small id="traceSourceSnippet">"Customers should capture government ID and a live selfie..."</small>
+              </div>
+              <div class="trace-arrow"></div>
+              <div class="trace-box">
+                <span>02 · REQUIREMENT</span>
+                <b id="traceReqId">FR-ONB-001</b>
+                <small id="traceReqStatement">OCR extraction with &gt;98% field accuracy</small>
+              </div>
+              <div class="trace-arrow"></div>
+              <div class="trace-box">
+                <span>03 · STATUTORY CONTROL</span>
+                <b id="traceControlTitle">RBI-KYC §14</b>
+                <small id="traceControlDesc">Customer Due Diligence &amp; GDPR Art. 25</small>
+              </div>
+              <div class="trace-arrow"></div>
+              <div class="trace-box">
+                <span>04 · ACCEPTANCE TEST</span>
+                <b id="traceTestId">AT-ONB-001</b>
+                <small id="traceTestDesc">Given valid ID photo &ge; 300 DPI, assert fields auto-filled &lt; 3s</small>
+              </div>
+            </div>
+
+            <!-- Trace Detail Pane -->
+            <div class="panel">
+              <p class="eyebrow">TRACEABILITY DETAILS</p>
+              <h3 id="tracePaneId">FR-ONB-001</h3>
+              <p id="tracePaneDesc" style="font-size:12px;line-height:1.6;margin-bottom:16px">The system shall extract customer demographic details from uploaded government ID cards using optical character recognition (OCR) with &gt; 98% field accuracy.</p>
+              <div style="font-size:11px;display:flex;flex-direction:column;gap:8px">
+                <div><span>Grounding Confidence:</span> <b style="float:right" id="tracePaneConfidence">96%</b></div>
+                <div><span>Regulatory Authority:</span> <b style="float:right" id="tracePaneRegs">RBI KYC §14, GDPR</b></div>
+                <div><span>SDLC Verification Gate:</span> <b style="float:right" id="tracePaneGate">Phase 2: Increment 1 Gate</b></div>
+                <div><span>Approval Status:</span> <b style="float:right" class="status-badge approved" id="tracePaneStatus">Approved</b></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Traceability Table Search & List -->
+          <div class="panel" style="margin-top:20px">
+            <div class="panel-heading">
+              <h3>Full Requirements Traceability Index</h3>
+              <input type="text" id="rtmSearch" placeholder="Search by ID, keyword, or regulation..." style="padding:6px 12px;border:1px solid var(--line);border-radius:6px;font-size:12px;width:260px" />
+            </div>
+            <div class="table-wrapper">
+              <table class="sdlc-table" id="rtmFullTable">
+                <thead>
+                  <tr>
+                    <th>Req ID</th>
+                    <th>Requirement Statement</th>
+                    <th>Category</th>
+                    <th>Source Stakeholder</th>
+                    <th>Applicable Regulations</th>
+                    <th>Acceptance Test (Gherkin)</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="rtmTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= VIEW 5: SDLC STRATEGY ================= -->
+        <section id="sdlc" class="view">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">SDLC DECISION FRAMEWORK</p>
+              <h2>SDLC Selection &amp; Execution Strategy</h2>
+              <p style="font-size:12px;color:var(--muted);margin-top:4px">Evaluated against the 19 criteria across Requirements, Project Team, User Community, and Risk characteristics.</p>
+            </div>
+            <button class="secondary" id="exportSDLCReportBtn">Export SDLC Assessment (.md) ↓</button>
+          </div>
+
+          <!-- Top Recommended Model Hero Card -->
+          <div class="recommendation-card">
+            <div class="rec-info">
+              <p class="eyebrow" style="color:var(--lime)">RECOMMENDED SDLC MODEL</p>
+              <h2 id="winnerName">Agile–DevSecOps Hybrid <span>Model</span></h2>
+              <div class="rec-tagline" id="winnerTagline">Regulated Iterative Delivery with Built-in Security</div>
+              <p class="rec-desc" id="winnerDesc">Combines Agile sprint-based backlog delivery and stakeholder collaboration with DevSecOps automated security gates and continuous deployment pipelines, plus formal V-Model verification milestones at release boundaries for regulatory sign-off.</p>
+              <div class="rec-badges" id="winnerBadges">
+                <span class="rec-badge">✓ High Requirements Fit</span>
+                <span class="rec-badge">✓ Continuous Security</span>
+                <span class="rec-badge">✓ Regulatory Gate Checkpoints</span>
+              </div>
+              <button class="primary" id="approveSDLCStrategyBtn">Approve SDLC Strategy for Execution</button>
+            </div>
+
+            <!-- Score Comparison Bars for all 6 Models -->
+            <div class="rec-scores">
+              <h4>SDLC MODEL ALIGNMENT COMPARISON</h4>
+              <div id="modelScoreBars"></div>
+            </div>
+          </div>
+
+          <!-- Category Breakdown Grid -->
+          <div class="cat-fit-grid" id="catFitGrid"></div>
+
+          <!-- Tailored SDLC Workflow Roadmap -->
+          <div class="workflow-section">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">TAILORED EXECUTION WORKFLOW</p>
+                <h3 id="workflowTitle">Agile–DevSecOps Hybrid Delivery Phases &amp; Financial Gates</h3>
+              </div>
+              <span class="status-badge approved">Regulator-Audited Workflow</span>
+            </div>
+            <div class="workflow-steps" id="workflowStepsContainer"></div>
+          </div>
+
+          <!-- ================= EXPANDABLE SDLC DECISION MATRIX ================= -->
+          <div class="matrix-section">
+            <div class="matrix-header">
+              <div>
+                <p class="eyebrow">BENCHMARK EVALUATION MATRIX</p>
+                <h3>SDLC Criteria Decision Table (19 Criteria)</h3>
+              </div>
+              <div style="display:flex;gap:10px">
+                <button class="secondary small-btn" id="addCriterionBtn">+ Add Custom Criterion</button>
+                <button class="primary small-btn" id="toggleMatrixViewBtn">Collapse Decision Matrix ▴</button>
+              </div>
+            </div>
+            <p class="matrix-instructions">
+              This interactive matrix compares all 6 SDLC models across the 4 characteristic categories. You can toggle any <b>Project Assessment</b> answer (Yes ↔ No) to test "what-if" project scenarios; the model compatibility scores and rankings will recalculate live!
+            </p>
+
+            <div class="table-wrapper" id="sdlcMatrixWrapper">
+              <table class="sdlc-table" id="sdlcTable">
+                <thead>
+                  <tr>
+                    <th style="width:70px">Category</th>
+                    <th style="width:40px">Code</th>
+                    <th style="min-width:320px">Evaluation Criterion / Question</th>
+                    <th style="width:130px;text-align:center">Project Assessment<br/><small style="font-weight:400;color:#cbf35b">Click to Toggle</small></th>
+                    <th class="model-header">Waterfall</th>
+                    <th class="model-header">V-Model</th>
+                    <th class="model-header">Spiral</th>
+                    <th class="model-header">Agile</th>
+                    <th class="model-header">DevSecOps</th>
+                    <th class="model-header">Hybrid</th>
+                  </tr>
+                </thead>
+                <tbody id="sdlcTableBody"></tbody>
+                <tfoot id="sdlcTableFoot"></tfoot>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= VIEW 6: GOVERNANCE & AUDIT ================= -->
+        <section id="governance" class="view">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">HUMAN-IN-THE-LOOP CONTROLS &amp; FORENSICS</p>
+              <h2>Four-Eyes Governance &amp; Immutable Audit Trail</h2>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button class="secondary" id="downloadAuditBtn">Download Audit Log (.json) ↓</button>
+              <button class="primary" id="exportSRSBtn">Export Full SRS (.md) ↓</button>
+            </div>
+          </div>
+
+          <!-- Human-in-the-Loop Sign-off Cards -->
+          <div class="approval-grid">
+            <article class="approval-card">
+              <p class="eyebrow">COMPLIANCE OFFICER REVIEW</p>
+              <h3>Statutory Sanctions &amp; AML Referral</h3>
+              <p>Review and verify the automated hold threshold for politically exposed persons (PEPs) under RBI KYC Master Direction Section 18.</p>
+              <div class="approval-footer">
+                <span class="status-badge pending" id="governanceStatus1">Pending Sign-off</span>
+                <button class="primary small-btn" id="govApprove1">Approve</button>
+              </div>
+            </article>
+
+            <article class="approval-card">
+              <p class="eyebrow">CHIEF INFORMATION SECURITY OFFICER</p>
+              <h3>Biometric &amp; Cryptographic Architecture</h3>
+              <p>Confirm TLS 1.3 in-transit and HSM-managed AES-256 rest encryption controls for biometric facial liveness vectors.</p>
+              <div class="approval-footer">
+                <span class="status-badge approved" id="governanceStatus2">✓ Approved by CISO</span>
+                <span style="font-size:10px;color:var(--muted)">Verified</span>
+              </div>
+            </article>
+
+            <article class="approval-card">
+              <p class="eyebrow">CHIEF ARCHITECT</p>
+              <h3>SDLC Strategy Adoption</h3>
+              <p>Sign off on adopting the recommended SDLC methodology and financial gate milestones for project execution.</p>
+              <div class="approval-footer">
+                <span class="status-badge approved" id="governanceStatus3">✓ Strategy Endorsed</span>
+                <span style="font-size:10px;color:var(--muted)">Verified</span>
+              </div>
+            </article>
+          </div>
+
+          <!-- Immutable Audit Trail Table -->
+          <div class="panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">TAMPER-EVIDENT LOG</p>
+                <h3>System Forensics &amp; Agent Event Trail</h3>
+              </div>
+              <span class="status-badge approved">SHA-256 Chained Ledger</span>
+            </div>
+            <div class="table-wrapper">
+              <table class="audit-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Agent / Actor</th>
+                    <th>Action</th>
+                    <th>Details</th>
+                    <th>Confidence</th>
+                    <th>Block Hash</th>
+                  </tr>
+                </thead>
+                <tbody id="auditTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Requirement Detail & Review Modal -->
+    <dialog class="modal" id="reqDetailModal">
+      <div class="modal-inner">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow" id="modalReqCategory">REQUIREMENT DETAILS</p>
+            <h2 id="modalReqId" style="font-size:22px;margin:0">FR-ONB-001</h2>
+          </div>
+          <button class="close-btn" id="closeReqModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="field-group">
+            <label>Requirement Statement</label>
+            <p id="modalReqStatement" style="font-weight:600;font-size:14px;color:var(--ink)"></p>
+          </div>
+          <div class="field-group">
+            <label>Business Justification</label>
+            <p id="modalReqJustification"></p>
+          </div>
+          <div class="field-group">
+            <label>Gherkin Acceptance Criteria (Given-When-Then)</label>
+            <div class="gherkin-box" id="modalReqGherkin"></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="field-group">
+              <label>Applicable Regulations</label>
+              <p id="modalReqRegs" style="font-weight:600;color:var(--forest)"></p>
+            </div>
+            <div class="field-group">
+              <label>Risk Level &amp; Priority</label>
+              <p id="modalReqRiskPriority"></p>
+            </div>
+          </div>
+          <div class="field-group">
+            <label>Source Stakeholder</label>
+            <p id="modalReqSource" style="color:var(--muted)"></p>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:10px">
+            <button class="secondary" id="modalRejectBtn">Reject</button>
+            <button class="primary" id="modalApproveBtn">Approve Requirement</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Add Custom Requirement Modal -->
+    <dialog class="modal" id="addReqModal">
+      <div class="modal-inner">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">NEW REQUIREMENT</p>
+            <h2 style="font-size:20px;margin:0">Author Custom Requirement</h2>
+          </div>
+          <button class="close-btn" id="closeAddReqModalBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="field-group">
+            <label for="newReqId">Requirement ID</label>
+            <input type="text" id="newReqId" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px" placeholder="e.g. FR-ONB-010" />
+          </div>
+          <div class="field-group">
+            <label for="newReqStatement">Requirement Statement</label>
+            <textarea id="newReqStatement" style="width:100%;min-height:70px;padding:8px 10px;border:1px solid var(--line);border-radius:6px" placeholder="The system shall..."></textarea>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="field-group">
+              <label for="newReqCategory">Category</label>
+              <select id="newReqCategory" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:6px">
+                <option value="Functional">Functional</option>
+                <option value="Security">Security</option>
+                <option value="Compliance">Compliance</option>
+                <option value="Availability">Availability</option>
+                <option value="Performance">Performance</option>
+                <option value="Integration">Integration</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="newReqPriority">Priority</label>
+              <select id="newReqPriority" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:6px">
+                <option value="Critical">Critical</option>
+                <option value="High" selected>High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="newReqGherkin">Acceptance Criteria (Gherkin format)</label>
+            <textarea id="newReqGherkin" style="width:100%;min-height:50px;padding:8px 10px;border:1px solid var(--line);border-radius:6px" placeholder="Given... When... Then..."></textarea>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:10px">
+            <button class="secondary" id="cancelAddReqBtn">Cancel</button>
+            <button class="primary" id="saveAddReqBtn">Save &amp; Baseline</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Add Custom Criterion Modal -->
+    <dialog class="modal" id="addCriterionModal">
+      <div class="modal-inner">
+        <div class="modal-header">
+          <div>
+            <p class="eyebrow">CRITERIA EXTENSION</p>
+            <h2 style="font-size:20px;margin:0">Add Project Criterion</h2>
+          </div>
+          <button class="close-btn" id="closeAddCritBtn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="field-group">
+            <label for="critCategory">Category</label>
+            <select id="critCategory" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:6px">
+              <option value="requirements">Characteristics of Requirements</option>
+              <option value="team">Characteristics of Project Team</option>
+              <option value="user">Characteristics of User Community</option>
+              <option value="risk">Characteristics of Project Type and Risk</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label for="critQuestion">Criterion / Question</label>
+            <input type="text" id="critQuestion" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px" placeholder="e.g. Does the project involve multi-jurisdiction cross-border data transfer?" />
+          </div>
+          <div class="field-group">
+            <label for="critAnswer">Project Evaluation</label>
+            <select id="critAnswer" style="width:100%;padding:8px;border:1px solid var(--line);border-radius:6px">
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+          <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:10px">
+            <button class="secondary" id="cancelAddCritBtn">Cancel</button>
+            <button class="primary" id="saveAddCritBtn">Add to Decision Matrix</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Self-contained script bundle: loads without CORS restrictions on file:// and http:// -->
+    <script src="src/app.bundle.js" defer></script>
+  </body>
+</html>
